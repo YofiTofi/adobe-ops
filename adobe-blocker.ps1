@@ -6,5 +6,5 @@ $paths = "C:\Program Files\Common Files\Adobe", "C:\Program Files\Adobe", "C:\Pr
  Get-ChildItem -Path $paths -Filter *.exe -Recurse |
     Select-Object Name,FullName |
     ForEach-Object `
-    {New-NetFirewallRule -DisplayName "Block $($_.Name) Inbound" -Direction Inbound -Program "$($_.FullName)" -Action Block;
-    New-NetFirewallRule -DisplayName "Block $($_.Name) Outbound" -Direction Outbound -Program "$($_.FullName)" -Action Block};
+    {New-NetFirewallRule -DisplayName "$($paths) Block $($_.Name) Inbound" -Direction Inbound -Program "$($_.FullName)" -Action Block;
+    New-NetFirewallRule -DisplayName "$($paths) Block $($_.Name) Outbound" -Direction Outbound -Program "$($_.FullName)" -Action Block};
